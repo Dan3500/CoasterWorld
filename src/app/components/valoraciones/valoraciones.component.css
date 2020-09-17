@@ -1,0 +1,55 @@
+label{
+    color:grey;
+}
+input[type = "radio"]{ 
+    display:none;
+}
+.clasificacion{
+    direction: rtl;
+    unicode-bidi: bidi-override;
+    text-align:center;
+    margin:auto;
+    font-size:80px;
+}
+label:hover{
+    color:#307FE2;
+    cursor:pointer;
+}
+label:hover ~ label{
+    color:#307FE2;
+}
+input[type = "radio"]:checked ~ label{
+    color:#307FE2;
+}
+.form{
+    text-align:center;
+    margin-left:30px;
+    margin-right:30px;
+}
+
+.btnValorar{
+    text-align:center;
+    margin:auto;
+}
+
+.estrellasPorUsuarios{
+    font-size:40px;
+    color:orange;
+    text-align:center;
+}
+.medias{
+    font-size:20px;
+    color:#307FE2;
+}
+.sinValoraciones{
+    text-align:center;
+    color:#307FE2;
+}
+.errorValorar0{
+    text-align:center;
+    color:red;
+}
+.tuValoracion{
+    text-align:center;
+    color:#307FE2;
+}

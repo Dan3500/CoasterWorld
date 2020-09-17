@@ -1,0 +1,138 @@
+<app-cabecera></app-cabecera>
+<div class="row cajaPrincipal">
+    <div class="col-lg-6 col-md-12 contenido" *ngIf="usuarioVisitado!=null && usuarioVisitado!='ERROR'">
+        <br>
+        <h1 class="tituloPerfil gran">{{datosPerfilUsuario.username}}</h1>
+        <br>
+        <div class="cajaInfoUsuario row">
+            <div class="col-7 cajaImgUser">
+                <div class="imgUser">
+                    <img src="{{datosPerfilUsuario.img}}" class="foto">
+                </div>
+            </div>
+            <div class="col-5 cajaInfoUser">
+                <ul class="listaInfo">
+                    <br>
+                    <li>    
+                        <span class="bold">Tipo:</span> {{datosPerfilUsuario.tipo}}
+                    </li>
+                    <br>
+                    <li>
+                        <span class="bold">Correo electrónico:</span> {{datosPerfilUsuario.email}}
+                    </li>
+                    <br>
+                    <li>
+                        <span class="bold">Fecha de alta:</span> {{datosPerfilUsuario.fechaAlta}}
+                    </li>
+                    <br>
+                    <li>
+                        <span class="bold">Puntos:</span> {{datosPerfilUsuario.puntos}}
+                    </li>
+                    <br>
+                </ul>
+            </div>
+        </div>
+        <h2 class="tituloPerfil gran">Valoraciones</h2>
+        <br>
+        <div class="cajaValoracionesUsuario  row">
+            <br>
+            <h4 class="tituloPerfil col-12">Parques</h4>
+            <br><br>
+            <!--CONTENIDO QUE SE MOSTRARA SI EXISTEN VALORACIONES DE PARQUES-->
+            <div class="col-12">
+                <div class="valoraciones" *ngFor="let vP of datosPerfilUsuario.valParques, index as i">
+                    <a [routerLink]="['/parques',vP.pagina]">{{vP.pagina}}</a> - <span class="estrellas">{{vP.valoracion}}</span>
+                </div>
+            </div>
+            <!--MENSAJE DE ERROR SI NO HAY VALORACIONES DE PARQUES-->
+            <div class="col-12" *ngIf="datosPerfilUsuario.valParques.length==0">
+                Este usuario no ha valorado ningun parque
+            </div>
+            <br><br>
+            <h4 class="tituloPerfil col-12">Atracciones</h4>
+            <br><br>
+            <!--CONTENIDO QUE SE MOSTRARA SI EXISTEN VALORACIONES DE ATRACCIONES-->
+            <div class="col-12">
+                <div class="valoraciones" *ngFor="let vA of datosPerfilUsuario.valAtracciones, index as i">
+                    <a [routerLink]="['/atraccion',vA.pagina]">{{vA.pagina}}</a> - <span class="estrellas">{{vA.valoracion}}</span>
+                </div>
+            </div>
+            <!--MENSAJE DE ERROR SI NO HAY VALORACIONES DE ATRACCIONES-->
+            <div class="col-12" *ngIf="datosPerfilUsuario.valAtracciones.length==0">
+                Este usuario no ha valorado ninguna atracción
+            </div>
+        </div>
+        <br>
+        <h2 class="tituloPerfil gran">Comentarios</h2>
+        <br>
+        <div class="cajaComentariosUsuario  row">
+            <br><br>
+            <h4 class="tituloPerfil col-12">Parques</h4>
+            <br><br>
+            <!--CONTENIDO QUE SE MOSTRARA SI EXISTEN COMENTARIOS DE PARQUES-->
+            <div class="col-12" *ngIf="datosPerfilUsuario.comParques">
+                <div class="comentarios" *ngFor="let cP of datosPerfilUsuario.comParques, index as i">
+                    <a [routerLink]="['/parques',cP.pagina]">{{cP.pagina}}</a> <p>"{{cP.mensaje}}"</p><br>
+                </div>
+            </div>
+            <!--MENSAJE DE ERROR SI NO HAY COMENTARIOS DE PARQUES-->
+            <div class="col-12" *ngIf="datosPerfilUsuario.comParques.length==0">
+                Este usuario no ha publicado comentarios de parques
+            </div>
+            <br><br>
+            <h4 class="tituloPerfil col-12">Atracciones</h4>
+            <br><br>
+            <!--CONTENIDO QUE SE MOSTRARA SI EXISTEN COMENTARIOS DE ATRACCIONES-->
+            <div class="col-12">
+                <div class="comentarios" *ngFor="let cA of datosPerfilUsuario.comAtracciones, index as i">
+                    <a [routerLink]="['/atraccion',cA.pagina]">{{cA.pagina}}</a> <p>"{{cA.mensaje}}"</p><br>
+                </div>
+            </div>
+            <!--MENSAJE DE ERROR SI NO HAY COMENTARIOS DE ATRACCIONES-->
+            <div class="col-12" *ngIf="datosPerfilUsuario.comAtracciones.length==0">
+                Este usuario no ha publicado comentarios de atracciones
+            </div>
+        </div>
+        <br>
+        <app-footer></app-footer>
+    </div>
+    <!--CONTENIDO QUE SE MOSTRARA MIENTRAS SE CARGA LA PAGINA-->
+    <div class="col-lg-6 col-md-12 contenido" *ngIf="usuarioVisitado=='ERROR'">
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+                <p class="pagError">
+                    El usuario que has buscado no existe :(
+                </p>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <app-footer></app-footer>
+    </div>
+    <!--CONTENIDO QUE SE MOSTRARA MIENTRAS SE CARGA LA PAGINA-->
+    <div class="col-lg-6 col-md-12 contenido" *ngIf="usuarioVisitado==null">
+        <app-loading></app-loading>
+    </div>
+</div>
+

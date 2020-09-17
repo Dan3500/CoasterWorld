@@ -1,0 +1,134 @@
+*,html{
+    margin:0;
+    padding:0;
+}
+.cajaPrincipal{
+    width:100%;
+    height:100%;
+    background-image: url("../../../assets/img/CoasterWorldBG.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+    .contenido{
+        margin:auto;
+        height:100%;
+        border:1px solid black;
+        border-top:0px;
+        background-color: rgba(255, 255, 255, 0.7);
+    }
+    .pagError{
+        font-size:35px;
+        width:750px;
+        margin:auto;
+        color:red;
+        font-weight: bold;
+        text-align:center;
+    }
+    .btnVolverError{
+        margin-left:43%;
+        height:35px;
+        width:110px;
+        background-color:rgba(100, 100, 100, 0.911);
+        border:1px solid black;
+        border-radius:5px;
+        transition:.5s;
+    }
+        .btnVolverError:hover{
+            transition:.5s;
+            background-color:rgba(128, 128, 128, 0.75);
+        }
+    .titulo{
+        text-align: center;
+    }
+    table{
+        text-align:center;
+        width:100%;
+    }
+        thead{
+            font-weight: bold;
+        }
+    .imgUser{
+        width:50px;
+        height:50px;
+    }
+    .btnMod{
+        height:35px;
+        width:75px;
+        background-color:rgba(0, 140, 255, 0.75);
+        border:1px solid black;
+        border-radius:5px;
+        transition:.5s;
+    }
+        .btnMod:hover{
+            transition:.5s;
+            background-color:rgba(0, 140, 255, 0.534);
+        }
+
+    .btnEliminar{
+        height:35px;
+        width:65px;
+        background-color:rgba(255, 43, 43, 0.911);
+        border:1px solid black;
+        border-radius:5px;
+        transition:.5s;
+    }
+        .btnEliminar:hover{
+            transition:.5s;
+            background-color:rgba(255, 43, 43, 0.75);
+        }
+
+.formMod{
+    height:600px;
+    border:2px solid black;
+    border-radius:0px 50px 50px 0px;
+    background-color: rgba(255, 255, 255, 0.90);
+    z-index: 1;
+    left:-100%;
+    top:115px;
+    transition:.5s;
+    position: fixed;
+    text-align:center;
+}
+.formMod.is-active{
+    height:600px;
+    border:2px solid black;
+    border-radius:0px 50px 50px 0px;
+    background-color: rgba(255, 255, 255, 0.9);
+    left:0;
+    top:115px;
+    z-index: 1;
+    position: fixed;
+    transition:.5s;
+    text-align:center;
+}
+.imgMod{
+    height:175px;
+    width:175px;
+    border:2px solid black;
+    border-radius:5px;
+}
+.fila{
+    background-color:rgba(255, 255, 255, 0);
+}
+.fila.is-active{
+    background-color:rgba(255, 255, 255, 0.678);
+}
+.cerrar{
+    text-align:right;
+}
+.btnCancelar{
+    margin-top:10px;
+    margin-right:20px;
+    width:35px;
+    height:35px;
+    font-size:20px;
+    border:2px solid black;
+    border-radius:25px;
+    background-color:rgba(255, 43, 43, 0.911);
+}
+    .btnCancelar:hover{
+        transition:.5s;
+        background-color:rgba(255, 43, 43, 0.75);
+    }

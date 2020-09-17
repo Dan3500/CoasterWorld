@@ -1,0 +1,9 @@
+@font-face{
+    font-family:"titulos";
+    src:url("../assets/fonts/titulos.ttf")
+}
+
+@font-face{
+    font-family:"textos";
+    src:url("../assets/fonts/textos.ttf")
+}

@@ -1,0 +1,117 @@
+*,html{
+    margin:0;
+    padding:0;
+}
+.cajaPrincipal{
+    width:100%;
+    height:100%;
+    background-image: url("../../../assets/img/CoasterWorldBG.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+    .contenido{
+        margin:auto;
+        height:100%;
+        border:1px solid black;
+        border-top:0px;
+        background-color: rgba(255, 255, 255, 0.7);
+    }
+.loading{
+    width:500px;
+    height:300px;
+    margin:auto;
+    text-align:center;
+}
+
+.tituloParque{
+    font-size:45px;
+    text-align:center;
+    font-family: "titulos";
+    letter-spacing: 2px;
+}
+    .titulo{
+        text-align:center;
+        font-family: "titulos";
+        letter-spacing: 2px;
+        margin-bottom:10px;
+        text-decoration:underline;
+    }
+.link{
+    text-align:center;
+}
+.textosPrincipales{
+    font-family:"textos";
+    text-align:justify;
+    margin:0px 35px 20px 35px;
+}
+    .logoParque{
+        text-align:center;
+        margin-top:20px;
+    }
+        .logoImg{
+            height:200px;
+            width:200px;
+        }
+    .texto{
+        padding-top:15px;
+    }
+    .maptext{
+        font-family: "textos";
+        text-align:center;
+        margin:auto;
+    }
+    .mapaParque{
+        text-align:center;
+        margin-bottom:15px;
+    }
+        .imgMapa{
+            height:600px;
+            width:95%;
+            border-radius:50px;
+            border:1px solid black;
+        }
+    .infoParque{
+        margin-top:10px;
+        font-family:"textos";
+    }
+        .tablaParque{
+            text-align:center;
+            margin-top:10px;
+            margin:auto;
+            border:1px solid black;
+        }
+        th{
+            border:1px solid black;
+        }
+        td{
+            border:1px solid black;
+        }
+
+    .cajaZonas{
+        width:95%;
+        margin:auto;
+        text-align:center;
+        z-index:0;
+    }
+        .zona{
+            margin:auto;
+        }
+        .imgZona{
+            width:90%;
+            height:250px;
+            border-radius:50px;
+        }
+        .tituloZona{
+            font-family:"titulos";
+            margin:10px;
+        }
+        .textoZonas{
+            margin:30px 30px 15px 30px;
+            text-align:justify;
+            font-family:"textos";
+        }
+        .ampliarImagen{
+            text-decoration:none;
+        }

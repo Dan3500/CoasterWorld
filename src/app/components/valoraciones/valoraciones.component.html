@@ -1,0 +1,32 @@
+<!--FORMULARIO PARA HACER UNA VALORACION-->
+<div class="form" *ngIf="usuarioConectado.username!=null">
+  <form #formValorar="ngForm" (submit)="valorar(formValorar)">
+      <p class="clasificacion">
+        <input id="radio1" type="radio" name="estrellas" (click)="ocultarErrorValorar0()" value="5" ngModel>
+        <label for="radio1">★</label>
+        <input id="radio2" type="radio" name="estrellas" (click)="ocultarErrorValorar0()" value="4" ngModel>
+        <label for="radio2">★</label>
+        <input id="radio3" type="radio" name="estrellas" (click)="ocultarErrorValorar0()" value="3" ngModel>
+        <label for="radio3">★</label>
+        <input id="radio4" type="radio" name="estrellas" (click)="ocultarErrorValorar0()" value="2" ngModel>
+        <label for="radio4">★</label>
+        <input id="radio5" type="radio" name="estrellas" (click)="ocultarErrorValorar0()" value="1" ngModel>
+        <label for="radio5">★</label>
+      </p>
+      <button type="submit" class="btnValorar btn btn-success" name="estrellas">Valorar</button>
+  </form><br>
+</div>
+<br>
+<div *ngIf="errorValorar0==true"><!--SE MOSTRARA SI NO SE INDICA LA PUNTUACIÓN AL VALORAR UNA PÁGINA-->
+ <p class="errorValorar0">No has indicado la valoración que quieres hacer</p>
+</div>
+<div *ngIf="sinValoraciones==false"><!--SE MOSTRARA SI LA PAGINA TIENE VALORACIONES-->
+  <div class="estrellasPorUsuarios">{{estrellasPorUsuarios}}<p class="medias">{{mediaPuntuacion}}★/5.0★ Por los usuarios</p></div>
+</div>
+<div class="sinValoraciones" *ngIf="sinValoraciones==true"><!--SE MOSTRARA SI LA PAGINA NO TIENE VALORACIONES-->
+  No hay puntuaciones de los usuarios<br>
+</div>
+<div class="tuValoracion" *ngIf="valoracionUsuario.mostrar==true"><!--SE MOSTRARA SI EL USUARIO CONECTADO HA VALORADO LA PÁGINA-->
+  Tu valoración: {{valoracionUsuario.puntos}}★<br>
+</div>
+<br>

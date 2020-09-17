@@ -1,0 +1,24 @@
+<header class="row">
+    <div class="container1 col-12 row">
+        <div class="col-2">
+            <a routerLink="/home" class="linkHome"><img src="../../../favicon.ico" class="iconoHome"></a>
+        </div>
+        <div class="col-8">
+            <h1 class="tituloPrincipal"><a routerLink="/home" class="enlacePrincipal">COASTER WORLD</a></h1>
+        </div>
+        <div class="col-2">
+            <div class="flexItem row" (click)="accionBurger()">
+                <div class="hamburger">
+                    <div class="_layer -top"></div>
+                    <div class="_layer -mid"></div>
+                    <div class="_layer -bottom"></div>
+                </div>
+                 <!--OPCIONES MENU HAMBURGUESA-->
+                <nav class="col-lg-3 col-md-12 menuppal">
+                    <app-menu></app-menu>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+    

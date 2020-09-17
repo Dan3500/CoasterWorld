@@ -1,0 +1,56 @@
+.containerFooter{
+    background-color: rgb(11, 29, 48);
+    border-bottom: black 1px solid;
+    border-top:rgb(19, 40, 63) 10px solid;
+}
+    h1{
+        text-align:center;
+        font-weight:bold;
+        padding-top:10px;
+        color:#5Bd0E6;
+    }
+        .text{
+            color:#5Bd0E6;
+            text-align:center;
+        }
+        .websOficiales{
+            margin:auto;
+            text-align:center;
+            padding-left:75px;
+        }
+            .imgParque{
+                height:50px;
+                width:50px;
+                margin:auto;
+                text-align:center;
+            }
+            .enlaceOficial{
+                text-align:center;
+                padding-top:12px;
+            }
+            
+            .icons{
+                text-align:center;
+                width:100%;
+                margin:auto;
+            }
+                .cajaIcon{
+                    text-align:center;
+                    padding-left:90px;
+                }
+
+                .link{
+                    margin:auto;
+                    text-align:center;
+                }
+                .icon{
+                    height:50px;
+                    width:50px;
+                    transform:scale(1);
+                    transition:.5s;
+                    margin-bottom: 10px;
+                }
+                    .icon:hover{
+                        transform:scale(1.1);
+                        transition:.5s;
+                    }

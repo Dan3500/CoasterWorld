@@ -1,0 +1,152 @@
+<app-cabecera></app-cabecera>
+<div class="row">
+    <div class="formMod col-md-12 col-lg-3">
+        <div class="cerrar">
+            <button (click)="cancelarMod()" class="btnCancelar">X</button>
+        </div>
+        <h3>Modificar al usuario "{{usuarioMod.nombre}}" ({{filaSeleccionada+1}})</h3><br>
+        <form #formMod="ngForm" (submit)="modificarUser($event)">
+            <label for="usernameMod">Nombre: </label>
+            <input type="text" id="usernameMod" name="usernameMod" value="{{usuarioMod.nombre}}"/><br><br>
+            <label for="puntosMod">Puntos: </label>
+            <input type="number" id="puntosMod" name="puntosMod" value="{{usuarioMod.puntos}}"/><br><br>
+            <label for="imgMod">Imagen: </label>
+            <img src="{{usuarioMod.img}}" class="imgMod"><br><br>
+            <input type="file" name="imgMod" id="imgMod" placeholder="Selecciona una nueva imagen"
+                    (change)="selectFile($event)"><br><br> 
+            <label for="tipoMod">Tipo: </label>
+            <select id="tipoMod" name="tipoMod" *ngIf="usuarioMod.tipo=='usuario'">
+                <option value="usuario" selected>Usuario</option>
+                <option value="moderador">Moderador</option>
+                <option value="admin">Administrador</option>
+            </select>
+            <select id="tipoMod" name="tipoMod" *ngIf="usuarioMod.tipo=='moderador'">
+                <option value="usuario">Usuario</option>
+                <option value="moderador" selected>Moderador</option>
+                <option value="admin">Administrador</option>
+            </select>
+            <select id="tipoMod" name="tipoMod" *ngIf="usuarioMod.tipo=='admin'">
+                <option value="usuario">Usuario</option>
+                <option value="moderador">Moderador</option>
+                <option value="admin" selected>Administrador</option>
+            </select><br><br>
+            <button type="submit" class="btnMod">Modificar</button><br>
+        </form>
+    </div>
+</div>
+<div class="row cajaPrincipal">
+    <div class="col-lg-8 col-md-12 contenido" *ngIf="usuarios!=null">
+        <!--SI EL USUARIO ESTA CONECTADO-->
+        <div *ngIf="usuarioConectado.username!=null">
+            <!--SI EL USUARIO ES UN ADMINISTRADOR-->
+            <div *ngIf="usuarioConectado.tipo=='admin'">
+                <br>
+                    <h1 class="titulo">GESTIÓN DE USUARIOS</h1><br>
+                    <h4 class="titulo">Conectado como administrador {{usuarioConectado.username}}</h4>
+                <br>
+                <div class="col-12 row">
+                    <table class="table-dark table-bordered col-12">
+                        <thead>
+                            <tr>
+                                <td>Nombre de usuario</td>
+                                <td>Email</td>
+                                <td>Fecha de alta</td>
+                                <td>Puntos</td>
+                                <td>Imagen</td>
+                                <td>Tipo</td>
+                                <td>Modificar</td>
+                                <td>Eliminar</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let usuario of usuarios index as i" class="fila{{i}}">
+                                <td>{{usuario.Username}}</td>
+                                <td>{{usuario.email}}</td>
+                                <td>{{usuario.fecha_alta}}</td>
+                                <td>{{usuario.puntos}}</td>
+                                <td><img src="{{usuario.img_perfil}}" class="imgUser"></td>
+                                <td>{{usuario.tipo}}</td>
+                                <td>
+                                    <button (click)="mostrarMod(usuario.Username,usuario.puntos,usuario.img_perfil,usuario.tipo,i)" 
+                                    class="btnMod">Modificar</button>
+                                </td>
+                                <td>
+                                    <button (click)="eliminar(usuario.Username)" class="btnEliminar">Eliminar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br>
+            </div>
+            <!--SI EL USUARIO NO ES UN ADMINISTRADOR-->
+            <div *ngIf="usuarioConectado.tipo!='admin'">
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                        <p class="pagError" *ngIf="usuarioConectado.tipo!='admin'">
+                            No eres administrador, no hay nada que puedas hacer aqui :(
+                        </p>
+                        
+                <br />
+                <br />
+                <br />
+                        <button  class="btnVolverError" (click)="irAPrincipal()">Volver a inicio</button>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+            </div>
+        </div>
+        <!--SI EL USUARIO NO ESTA CONECTADO-->
+        <div *ngIf="usuarioConectado.username==null">
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+                    <p class="pagError" *ngIf="usuarioConectado.tipo!='admin'">
+                        No estas registrado, no hay nada que puedas hacer aqui :(
+                    </p>
+            <br />
+            <br />
+            <br />
+                    <button  class="btnVolverError" (click)="irAPrincipal()">Volver a inicio</button>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+        </div>
+    <app-footer></app-footer>
+    </div>
+    <!--CONTENIDO QUE SE VERA MIENTRAS CARGA LA PAGINA-->
+    <div class="col-lg-8 col-md-12 contenido" *ngIf="usuarios==null">
+        <app-loading></app-loading>
+    </div>
+</div>

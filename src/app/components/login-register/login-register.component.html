@@ -1,0 +1,111 @@
+<app-cabecera></app-cabecera><!--HEADER-->
+<div class="row cajaPrincipal">
+    <div class="col-lg-6 col-md-12 contenido">
+       <div class="col-12 formLogin" *ngIf="usuarioConectado.username==null">
+              <br />
+              <!--FORMULARIO DE INICIO DE SESIÓN-->
+              <h2 class="tituloLogin">Inicio de sesión</h2><br>
+              <form  #formLogin="ngForm" (submit)="loginUser($event)">
+                     <input type="text" name="username" size="30" placeholder="Nombre de usuario*" (click)="ocultarMsgLogError()"
+                     id="username" class="text-info" required/>
+                     <br /><br />
+                     <input type="password" name="password" size="30" placeholder="Contraseña*" (click)="ocultarMsgLogError()"
+                     id="password" class="text-info" required/>
+                     <br /><br />
+                     <input type="submit" class="btnIniciar" value="Iniciar Sesión"/>
+                     <button type="reset" class="btnReset">Borrar</button>
+              </form>
+              <div>
+                     <p class="textError" id="loginError" *ngIf="login.error==true">
+                            Datos erróneos, inténtalo de nuevo
+                     </p>
+                     <p class="textError" id="loginErrorExp" *ngIf="login.errorExp==true">
+                            No puedes escribir los caracteres "<" o ">" ni dejar en blanco los campos requeridos
+                     </p>
+              </div>
+              <br />
+              <hr />
+              <br />
+              <!--FORMULARIO DE REGISTRO-->
+              <h2 class="tituloRegister">Registrarse</h2><br />
+              <form #formRegister="ngForm" (submit)="registerUser($event)">
+                     <input type="text"  name="usernameR" size="30" placeholder="Nombre de usuario*"
+                     id="usernameR" class="text-info" (click)="ocultarMsgRegError()" /><br />
+                            <p class="textError" id="regNombreError" *ngIf="register.errorNombre==true">
+                                   El nombre de usuario debe tener un mínimo de 3 carácteres y un máximo de 16 (letras, números, guiones y guiones bajos)
+                            </p>
+                            <p class="textError" id="regNombreRegistradoError" *ngIf="register.errorNombreRegistrado==true">
+                                   Este nombre de usuario ya está registrado. Elige otro
+                            </p>
+                     <input type="password"  name="passwordR"  size="30" placeholder="Contraseña*"
+                     id="passwordR" class="text-info regInput" (click)="ocultarMsgRegError()" /><br />
+                     <input type="password"  name="password2R" size="30" placeholder="Confirmar contraseña*"
+                     id="password2R" class="text-info regInput" (click)="ocultarMsgRegError()" /><br />
+                            <p class="textError" id="regPassError" *ngIf="register.errorPassCoin==true">
+                                   Las contraseñas no coinciden
+                            </p>
+                            <p class="textError" id="regPassRegExpError" *ngIf="register.errorPassRegExp==true">
+                                   La contraseña debe tener un mínimo de 5 carácteres y un máximo de 16 (letras, números, guiones y guiones bajos)
+                            </p>
+                     <input type="email" name="email" size="30" placeholder="Correo electrónico*" id="email" 
+                     class="text-info regInput" (click)="ocultarMsgRegError()" /><br />
+                            <p class="textError" id="regEmailRegistradoError" *ngIf="register.errorEmailRegistrado==true">
+                                   Este email ya está registrado. Elige otro
+                            </p>
+                            <p class="textError" id="regEmailRegExpError" *ngIf="register.errorEmail==true">
+                                   Este texto no tiene formato de correo electrónico
+                            </p>
+                            <p class="instrucciones">
+                                   Escribe cualquier carácter menos "<" y ">" y no dejes los campos requeridos en blanco
+                            </p>
+                            <p class="instrucciones">
+                                   * -> Requerido
+                            </p>
+                     <br />
+                     <input type="submit" class="btnIniciar" value="Registrarse"/>
+                     <button type="reset" class="btnReset">Borrar</button><br />    
+              </form>
+              <p class="textError" id="registerFatalError" *ngIf="register.fatalError==true">
+                     Ha habido un error al intentar registrar los datos. Inténtalo de nuevo más tarde.
+              </p>
+              <br />
+              <button  class="btnVolver" (click)="irAPrincipal()">Volver a inicio</button>
+          </div>
+          <!--CONTENIDO QUE SE MOSTRARÁ SI SE INTENTA ACCEDER A LA PÁGINA CONECTADO-->
+          <div class="col-12" *ngIf="usuarioConectado.username!=null">
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+                     <p class="pagError">Ya estas Logueado, no hay nada que puedas hacer aqui :(</p>
+              <br />
+              <br />
+              <br />
+                     <button  class="btnVolverError" (click)="irAPrincipal()">Volver a inicio</button>
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+          </div>
+    <br>
+    <app-footer></app-footer><!--FOOTER-->
+    </div>
+</div>

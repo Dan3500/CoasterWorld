@@ -1,0 +1,69 @@
+<app-cabecera></app-cabecera>
+<div class="row cajaPrincipal">
+    <div class="col-lg-6 col-md-12 contenido" *ngIf="parqueMostrar.nombre!=null">
+        <br>
+        <h1 class="tituloParque">{{parqueMostrar.nombre}}</h1>
+        <br>
+        <hr>
+        <div class="logoParque">
+            <img class="logoImg" src="{{parqueMostrar.logo}}" alt="Logo de {{parqueMostrar.nombre}}">
+        </div>
+        <div class="link">Página oficial:
+            <a href="https://www.portaventuraworld.com/" *ngIf="parqueMostrar.nombre=='PortAventura'">https://www.portaventuraworld.com/</a>
+            <a href="https://www.parquewarner.com/" *ngIf="parqueMostrar.nombre=='Parque Warner Madrid'">https://www.parquewarner.com/</a>
+            <a href="https://www.terramiticapark.com/" *ngIf="parqueMostrar.nombre=='Terra Mitica'">https://www.terramiticapark.com/</a>
+            <a href="https://www.parquedeatracciones.es/" *ngIf="parqueMostrar.nombre=='Parque de Atracciones de Madrid'">https://www.parquedeatracciones.es/</a>
+        </div>
+        <div class="row infoParque">
+            <table class="tablaParque col-10">
+                <tr>
+                    <th>Localización</th>
+                    <th>Aforo</th>
+                    <th>Fecha de construcción</th>
+                </tr>
+                <tr>
+                    <td>{{parqueMostrar.localizacion}}</td>
+                    <td>{{parqueMostrar.aforo}} personas</td>
+                    <td>{{parqueMostrar.fechaConstruccion}}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="textosPrincipales">
+            <p class="texto" *ngFor="let texto of parqueMostrar.textos">{{texto}}</p>
+        </div>
+        <div class="row">
+            <div class="mapaParque col-12">
+                <a href="{{parqueMostrar.imgMapa}}" target="_blank">
+                    <img class="imgMapa" src="{{parqueMostrar.imgMapa}}"  alt="Mapa completo de {{parqueMostrar.nombre}}">
+                </a>
+                <div class="maptext">Mapa del parque</div>
+            </div>
+        </div>
+        <br />
+        <h2 class="titulo">ZONAS DEL PARQUE</h2>
+        <div class="row cajaZonas">
+            <div class="col-lg-6 col-sm-12 zona" *ngFor="let zona of parqueMostrar.zonas">
+                <h3 class="tituloZona">{{zona['nombre_zona']}}</h3>
+                <img class="imgZona" src="{{zona['img_zona']}}"><br>
+                    <a class="ampliarImagen" href="{{zona['img_zona']}}" target="_blank">Ver imagen ampliada</a>
+                <br>
+                <p class="textoZonas">{{parqueMostrar.textoZonas[zona['nombre_zona']]}}</p>
+                <h4 class="tituloZona">Atracciones</h4>
+                <div *ngFor="let atraccionesZona of parqueMostrar.atracciones[zona['nombre_zona']], index as i">
+                    <a [routerLink]="['/atraccion',atraccionesZona['nombre']]">{{atraccionesZona['nombre']}}</a><br>
+                </div>
+               <br>
+               <br>
+            </div>
+        </div>
+        <h2 class="titulo">Opiniones</h2>
+        <app-comentarios></app-comentarios>
+        <br>
+        <br>
+        <app-footer></app-footer>
+    </div>
+    <!--CONTENIDO QUE SE MOSTRARA MIENTRAS SE CARGA LA PAGINA-->
+    <div *ngIf="parqueMostrar.nombre==null" class=" col-lg-6 col-md-12 contenido">
+        <app-loading></app-loading>
+    </div>
+</div>

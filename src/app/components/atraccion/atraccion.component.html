@@ -1,0 +1,78 @@
+<app-cabecera></app-cabecera>
+<div class="row cajaPrincipal">
+    <div class="col-lg-6 col-md-12 contenido" *ngIf="atraccionMostrar.nombre!=null">
+    <br>
+    <h1 class="titulo">{{atraccionMostrar.nombre}}</h1>
+    <hr>
+    <br>
+    <ngb-carousel class="carrusel">
+        <ng-template ngbSlide="ngbSlide" *ngFor="let img of atraccionMostrar.img, index as i">
+          <div class="picsum-img-wrapper">
+            <img src="{{img}}" class="carruselImg" alt="Imagen {{i+1}} de {{atraccionMostrar.nombre}}">
+          </div>
+        </ng-template>
+    </ngb-carousel>
+    <br>
+    <h3 class="titulo">Ficha técnica de la atracción</h3>
+    <br>
+    <table>
+        <tr>
+            <th>PARQUE</th>
+            <td><a [routerLink]="['/parques',atraccionMostrar.parque]">{{atraccionMostrar.parque}}</a></td>
+        </tr>
+        <tr>
+            <th>ZONA</th>
+            <td>{{atraccionMostrar.zona}}</td>
+        </tr>
+        <tr>
+            <th>CATEGORÍA</th>
+            <td>{{atraccionMostrar.categoria}}</td>
+        </tr>
+        <tr>
+            <th>FABRICANTE</th>
+            <td *ngIf="atraccionMostrar.fabricante!=null">{{atraccionMostrar.fabricante}}</td>
+            <td *ngIf="atraccionMostrar.fabricante==null">Desconocido</td>
+        </tr>
+        <tr>
+            <th>ALTURA</th>
+            <td *ngIf="atraccionMostrar.altura!=null">{{atraccionMostrar.altura}} metros</td>
+            <td *ngIf="atraccionMostrar.altura==null">No registrado</td>
+        </tr>
+        <tr>
+            <th>VELOCIDAD</th>
+            <td *ngIf="atraccionMostrar.velocidad!=null">{{atraccionMostrar.velocidad}} km/h</td>
+            <td *ngIf="atraccionMostrar.velocidad==null">No registrado</td>
+        </tr>
+        <tr>
+            <th>LONGITUD</th>
+            <td *ngIf="atraccionMostrar.longitud!=null">{{atraccionMostrar.longitud}} metros</td>
+            <td *ngIf="atraccionMostrar.longitud==null">No registrado</td>
+        </tr>
+        <tr>
+            <th>INVERSIONES</th>
+            <td>{{atraccionMostrar.inversiones}}</td>
+        </tr>
+    </table>
+    <br>
+    <div class="textosPrincipales">
+        <p class="texto" *ngFor="let texto of atraccionMostrar.textos">{{texto}}</p>
+    </div>
+    <h3 class="titulo">On-ride</h3>
+    <div class="videoOnride col-12" *ngIf="atraccionMostrar.videoOnride!=null">
+        <iframe [src]="atraccionMostrar.videoOnride | youtube" frameborder="0" 
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="videoOnride col-12" *ngIf="atraccionMostrar.videoOnride==null">
+        No hay video on-ride de esta atracción :(
+    </div>
+    <br>
+    <h2 class="titulo">OPINIONES</h2>
+    <app-comentarios></app-comentarios>
+    <br>
+    <app-footer></app-footer>
+    </div>
+    <!--CCONTENIDO QUE SE MOSTRARA CUANDO SE ESTE CARGANDO LA PÁGINA-->
+    <div *ngIf="atraccionMostrar.nombre==null" class=" col-lg-6 col-md-12 contenido">
+        <app-loading></app-loading>
+    </div>
+</div>

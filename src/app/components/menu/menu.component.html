@@ -1,0 +1,48 @@
+<div class="menuPerfil">
+    <div class=" col-12 btnLogs">
+        <br>
+        <button type="submit" class="btn btn-info" (click)="irALogs()" *ngIf="usuarioConectado.username==null">Iniciar sesión/Registrarse</button>
+    </div>
+    <div class="col-12 containerPerfil" *ngIf="usuarioConectado.username!=null">
+        <div class="imgPerfil">
+            <img class="fotoPerfil" src="{{usuarioConectado.userImg}}"/>
+        </div>
+        <a routerLink="/user/{{usuarioConectado.username}}" class="nombreUser">{{usuarioConectado.username}}</a>
+        <br><span class="tipo"> ({{usuarioConectado.tipo}})</span>
+        <br>
+        <div class="otrasOpciones">
+             <button  class="btn btn-info btnSolicitud" (click)="irASolicitud()">Enviar solicitud</button><br>
+             <button  class="btn btn-info btnSolicitud" (click)="irAAdmin()" *ngIf="usuarioConectado.tipo=='admin'">Gestionar usuarios</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 containerListaParques">
+            <h2 class="tituloParques">Ver parques</h2>
+            <ul class="lista">
+                <a [routerLink]="['/parques','PortAventura']">
+                    <li class="compList">
+                        <img src="../../../assets/img/PortAventura.png" class="imgParque"/>   PortAventura
+                    </li>
+                </a>
+                <a [routerLink]="['/parques','Parque Warner Madrid']">
+                    <li class="compList">
+                        <img src="../../../assets/img/Warner.png" class="imgParque"/>   Parque Warner Madrid
+                    </li>
+                </a>
+                <a [routerLink]="['/parques','Terra Mitica']">
+                    <li class="compList">
+                        <img src="../../../assets/img/TerraMitica.png" class="imgParque"/>  Terra Mítica
+                    </li>
+                </a>
+                <a [routerLink]="['/parques','Parque de Atracciones de Madrid']">
+                    <li class="compList">
+                        <img src="../../../assets/img/ParqueAtraccionesMadrid.png" class="imgParque"/>   Parque de Atracciones de Madrid
+                    </li>
+                </a>
+            </ul>
+        </div>
+    </div>
+    <div *ngIf="usuarioConectado.username!=null">
+        <button type="submit" class="btn btn-danger btnLogOut" (click)="logOut()">Cerrar sesión</button>
+    </div>
+</div>

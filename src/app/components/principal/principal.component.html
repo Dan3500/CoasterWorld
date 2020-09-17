@@ -1,0 +1,120 @@
+<app-cabecera></app-cabecera>
+<div class="row cajaPrincipal">
+    <div class="col-lg-6 col-md-12 contenido">
+        <br>
+        <h1 class="tituloPrincipal">Bienvenido a Coaster World</h1>
+        <br>
+        <hr>
+        <br>
+        <h2 class="titulo">Visita los parques de atracciones más importantes de España</h2>
+        <br>
+        <!--CARRUSEL 1-->
+        <ngb-carousel class="carrusel">
+          <ng-template ngbSlide="ngbSlide">
+            <div class="picsum-img-wrapper">
+              <img src="../../../assets/img/principal/PortAventura.jpeg" class="carruselImg" alt="Random first slide">
+            </div>
+            <div class="carousel-caption textos">
+              <h3><a [routerLink]="['/parques','PortAventura']" class="textos">PortAventura</a></h3>
+              <br>
+            </div>
+          </ng-template>
+          <ng-template ngbSlide>
+              <div class="picsum-img-wrapper">
+                <img src="../../../assets/img/principal/parqueWarner.jpg" class="carruselImg" alt="Random first slide">
+              </div>
+              <div class="carousel-caption">
+                <h3><a [routerLink]="['/parques','Parque Warner Madrid']" class="textos">Parque Warner Madrid</a></h3>
+                <br> 
+              </div>
+            </ng-template>
+            <ng-template ngbSlide>
+              <div class="picsum-img-wrapper">
+                <img src="../../../assets/img/principal/terraMitica.jpg" class="carruselImg" alt="Random first slide">
+              </div>
+              <div class="carousel-caption">
+                <h3><a [routerLink]="['/parques','Terra Mítica']" class="textos">Terra Mítica</a></h3>
+                <br>
+              </div>
+            </ng-template>
+            <ng-template ngbSlide>
+              <div class="picsum-img-wrapper">
+                <img src="../../../assets/img/principal/PAM.jpg" class="carruselImg" alt="Random first slide">
+              </div>
+              <div class="carousel-caption">
+                <h3><a [routerLink]="['/parques','Parque de Atracciones de Madrid']" class="textos">Parque de Atracciones de Madrid</a></h3>
+                <br>
+              </div>
+            </ng-template>
+        </ngb-carousel>
+        <br>
+        <h2 class="titulo">Descubre las sensaciones de cada atracción</h2>
+        <br>
+        <!--CARRUSEL 2-->
+        <ngb-carousel class="carrusel">
+            <ng-template ngbSlide>
+              <div class="picsum-img-wrapper">
+                <img src="../../../assets/img/principal/shambala.jpeg" class="carruselImg" alt="Random first slide">
+              </div>
+              <div class="carousel-caption textos">
+                <h3><a [routerLink]="['/atraccion','Shambhala']" class="textos">SHAMBALA</a> Y 
+                  <a [routerLink]="['/atraccion','Dragon Khan']" class="textos">DRAGON KHAN</a></h3>
+                <p><a [routerLink]="['/parques','PortAventura']" class="textos">PortAventura</a></p>
+                <br>
+              </div>
+            </ng-template>
+            <ng-template ngbSlide>
+                <div class="picsum-img-wrapper">
+                  <img src="../../../assets/img/principal/stunt fall.jpg" class="carruselImg" alt="Random first slide">
+                </div>
+                <div class="carousel-caption">
+                  <h3><a [routerLink]="['/atraccion','Stunt Fall']" class="textos">STUNT FALL</a></h3>
+                  <p><a [routerLink]="['/parques','Parque Warner Madrid']" class="textos">Parque Warner Madrid</a></p>
+                  <br>
+                </div>
+              </ng-template>
+              <ng-template ngbSlide>
+                <div class="picsum-img-wrapper">
+                  <img src="../../../assets/img/principal/furius_baco.jpg" class="carruselImg" alt="Random first slide">
+                </div>
+                <div class="carousel-caption">
+                  <h3><a [routerLink]="['/atraccion','Furius Baco']" class="textos">FURIUS BACO</a></h3>
+                  <p><a [routerLink]="['/parques','PortAventura']" class="textos">PortAventura</a></p>
+                  <br>
+                </div>
+              </ng-template>
+              <ng-template ngbSlide>
+                <div class="picsum-img-wrapper">
+                  <img src="../../../assets/img/principal/abismo.jpg" class="carruselImg" alt="Random first slide">
+                </div>
+                <div class="carousel-caption">
+                  <h3><a [routerLink]="['/atraccion','Abismo']" class="textos">ABISMO</a></h3>
+                  <p><a [routerLink]="['/parques','Parque de Atracciones de Madrid']" class="textos">Parque de Atracciones de Madrid</a></p>
+                  <br>
+                </div>
+              </ng-template>
+              <ng-template ngbSlide>
+                <div class="picsum-img-wrapper">
+                  <img src="../../../assets/img/principal/inferno.jpg" class="carruselImg" alt="Random first slide">
+                </div>
+                <div class="carousel-caption">
+                  <h3><a [routerLink]="['/atraccion','Inferno']" class="textos">INFERNO</a></h3>
+                  <p><a [routerLink]="['/parques','Terra Mitica']" class="textos">Terra Mitica</a></p>
+                  <br>
+                </div>
+              </ng-template>
+              <ng-template ngbSlide>
+                <div class="picsum-img-wrapper">
+                  <img src="../../../assets/img/principal/redforce.jpg" class="carruselImg" alt="Random first slide">
+                </div>
+                <div class="carousel-caption">
+                  <h3><a [routerLink]="['/atraccion','Red Force']" class="textos">RED FORCE</a></h3>
+                  <p><a [routerLink]="['/parques','PortAventura']" class="textos">PortAventura</a></p>
+                  <br>
+                </div>
+              </ng-template>
+        </ngb-carousel>
+        <br>
+    <app-footer></app-footer>
+    </div>
+</div>

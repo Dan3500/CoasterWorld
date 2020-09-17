@@ -1,0 +1,63 @@
+*,html{
+    margin:0;
+    padding:0;
+}
+.cajaPrincipal{
+    width:100%;
+    height:100%;
+    background-image: url("../../../assets/img/CoasterWorldBG.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+    .contenido{
+        margin:auto;
+        height:100%;
+        border:1px solid black;
+        border-top:0px;
+        background-color: rgba(255, 255, 255, 0.7);
+    }
+.titulo{
+    text-align:center;
+    font-family:"titulos";
+}
+
+table{
+    width:60%;
+    margin:auto;
+}
+td,th{
+    border:1px solid black;
+    text-align:center;
+}
+.textosPrincipales{
+    font-family:"textos";
+    text-align:justify;
+    margin:0px 35px 20px 35px;
+}
+.texto{
+    padding-top:15px;
+}
+
+.carrusel{
+    border:2px solid black;
+    border-radius:2px;
+    cursor:pointer;
+    z-index:0;
+}
+.carruselImg{
+    height:600px;
+    width:100%;
+}
+.videoOnride{
+    margin:auto;
+    text-align:center;
+    border-bottom:2px solid black;
+    margin-top:10px;
+}
+iframe{
+    width:90%;
+    height:394px;
+    border-radius:10px;
+}

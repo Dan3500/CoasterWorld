@@ -1,0 +1,52 @@
+<div class="cajaPrincipal">
+    <app-valoraciones></app-valoraciones>
+    <div class="separador"></div>
+    <br>
+    <h2 class="titulo">COMENTARIOS</h2>
+    <!--SI EL USUARIO ESTA CONECTADO, PODRA ESCRIBIR UN COMENTARIO-->
+    <div class="escribirComentario" *ngIf="usuarioConectado.username!=null">
+        <form class="row cajaEscribir" #formComentario="ngForm" (submit)="publicarComentario($event)">
+            <div class="col-lg-2 col-2">
+                <a [routerLink]="['/user',usuarioConectado.username]"><img class="imgUser" src="{{usuarioConectado.userImg}}"></a>
+            </div>
+            <div class="col-lg-8 col-8 divtextoEscribirComentario">
+                <textarea class="textoEscribirComentario" name="comentario" id="comentario" maxlength="255"
+                          (click)="ocultarError()"></textarea>
+            </div>
+            <div class="col-lg-2 col-2 btnComentario">
+                <button class="btnPublicar btn-info btn" type="submit">Publicar</button>
+            </div>
+        </form>
+        <div class="errorEscribirComentario" *ngIf="errorRegExp==true">
+            <p class="error">No has escrito ningún caracter o algún caracter escrito es "<" o ">".</p>
+        </div>
+    </div>
+    <!--SI EL USUARIO NO ESTA CONECTADO, NO PODRA ESCRIBIRLO -->
+    <div class="errorEscribirComentario"  *ngIf="usuarioConectado.username==null">
+        <p>No puedes valorar ni escribir comentarios ya que no estas conectado</p>
+        <a class="inicioSesion" [routerLink]="['/logs']">Iniciar sesión</a>
+    </div>
+    <!--CAJA DE COMENTARIOS QUE SE MOSTRARA SIEMPRE SI HAY COMENTARIOS-->
+    <div class="cajaComentarios" *ngFor="let comentario of infoComentarios.comentarios, index as i, last as isLast">
+        <br *ngIf="isLast">
+        <p *ngIf="isLast" class="errorEscribirComentario">{{i+1}} comentario(s)</p>
+    </div>
+    <div class="cajaComentarios" *ngFor="let comentario of infoComentarios.comentarios, index as i, last as isLast">
+        <div class="comentario row">
+            <div class="col-4 foto">
+                <a [routerLink]="['/user',comentario.Usuario]"><img class="imgComentario" src="{{comentario.Img}}"></a>
+            </div>
+            <div class="col-8 mensaje">
+                <a [routerLink]="['/user',comentario.Usuario]" class="userComentario">{{comentario.Usuario}}</a>
+                {{comentario.Fecha}}<br>
+                <p class="textoComentario">{{comentario.Comentario}}</p>
+            </div>
+        </div>
+        <br>
+    </div>
+    <!--SI NO HAY COMENTARIOS-->
+    <div class="errorEscribirComentario" *ngIf="sinComentarios==true">
+        <br>
+        <p>No hay comentarios en esta página</p>
+    </div>
+</div>

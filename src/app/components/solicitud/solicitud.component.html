@@ -1,0 +1,64 @@
+<app-cabecera></app-cabecera><!--HEADER-->
+<div class="row cajaPrincipal">
+    <div class="col-lg-6 col-md-12 contenido">
+       <div class="col-12 formEnviar" *ngIf="usuarioConectado.username!=null">
+              <br />
+              <h2 class="tituloSolicitud">Enviar una solicitud</h2><br />
+              <form #formEmail="ngForm" (submit)="enviarSolicitud($event)">
+                    <fieldset class="scheduler-border">
+                        <legend class="scheduler-border">Datos de la solicitud</legend>
+                        <br>
+                        <div class="control-group">
+                                <h3>{{usuarioConectado.username}}</h3>
+                                <form><h5><input type="text" name="emisor" class="emisor" id="emisor" value="{{usuarioConectado.email}}" size="25" readonly="readonly" disabled></h5> </form>
+                                <br>
+                                <label for="asunto">Asunto:</label>
+                                <input type="text" class="asunto" name="asunto" id="asunto" maxlength="90"/><br><br>
+                                <label for="mensaje">Mensaje:</label><br>
+                                <textarea class="mensaje" name="mensaje" id="mensaje" size="96"></textarea><br><br>
+                                <input type="submit" class="btnEnviar" value="Enviar solicitud"/>
+                                <button type="reset" class="btnReset">Borrar</button><br /> 
+                        </div>
+                    </fieldset>
+              </form>
+              <br />
+              <button  class="btnVolver" (click)="irAPrincipal()">Volver a inicio</button>
+          </div>
+          <!--CONTENIDO QUE SE MOSTRARÁ SI SE INTENTA ACCEDER A LA PÁGINA SIN ESTAR CONECTADO-->
+          <div class="col-12 contenidoError" *ngIf="usuarioConectado.username==null">
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+                     <p class="pagError">No puedes acceder a esta página si no estas conectado :(</p>
+              <br />
+              <br />
+              <br />
+                     <button  class="btnVolver" (click)="irAPrincipal()">Volver a inicio</button>
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+          </div>
+    <br>
+    <app-footer></app-footer><!--FOOTER-->
+    </div>
+</div>

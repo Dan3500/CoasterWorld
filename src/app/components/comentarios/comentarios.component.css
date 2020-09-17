@@ -1,0 +1,105 @@
+.cajaPrincipal{
+    width:100%;
+    font-family:'textos';
+}
+.titulo{
+    font-family:"titulos";
+    text-align:center;
+}
+.errorEscribirComentario{
+    text-align:center;
+}
+        .cajaEscribir{
+            text-align:center;
+            margin:auto;
+            height:100px;
+        }
+            .imgUser{
+                border-radius:100%;
+                border:1px solid black;
+                margin-top:10px;
+                width:75px;
+                height:75px;
+            }
+            .imgUser:hover{
+                border-radius:100%;
+                margin-top:10px;
+                border:2px solid #307FE2;
+                width:75px;
+                height:75px;
+            }
+            .error{
+                color:red;
+            }
+            
+            .textoEscribirComentario{
+                border:1px solid black;
+                background-color:rgba(255, 0, 0, 0);
+                width:100%;
+                height:100%;
+                resize: none;
+                padding:2px;
+                border-radius:10px;
+            }
+
+            .divtextoEscribirComentario{
+                text-align:left;
+            }
+
+            .btnComentario{
+                margin:auto;
+                text-align:left;
+                padding:0px;
+            }
+
+            .btnPublicar{
+                text-align:center;
+                padding-left:9%;
+                width:95%;
+            }
+
+    .cajaComentarios{
+        width:100%;
+    }
+
+    .comentario{
+        width:90%;
+        margin:auto;
+    }
+
+    .imgComentario{
+        border-radius:100%;
+        border:1px solid black;
+        width:75px;
+        height:75px;
+    }
+    .imgComentario:hover{
+        border-radius:100%;
+        border:2px solid #307FE2;
+        width:75px;
+        height:75px;
+    }
+
+    .foto{
+        text-align:right;
+    }
+
+
+    .userComentario{
+        text-decoration:none;
+        font-weight:bold;
+        color:black;
+    }
+    .userComentario:hover{
+        text-decoration:underline;
+    }
+
+    .inicioSesion{
+        border:1px solid rgb(75, 75, 75);
+        padding:10px;
+    }
+
+    .separador{
+        border-bottom:2px solid black;
+        width:100%;
+    }
