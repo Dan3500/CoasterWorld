@@ -178,6 +178,11 @@ export class AdminComponent implements OnInit {
           img=this.imgMod.nombreArchivo;//Se obtendra la ruta del archivo como imagen
           this.servicioDatos.modificarUser(username,puntos,tipo,img,this.usuarioMod.nombre).subscribe(datos => {//Se llama al servicio para modificar el usuario
             if (datos["result"]=="OK"){//Si se modifica correctamente el usuario, le saltara al usuario un mensaje de informacion
+              this.usuarioConectado.points=username;
+              this.usuarioConectado.points=puntos;
+              this.usuarioConectado.tipo=tipo;
+              this.usuarioConectado.userImg=img;
+              sessionStorage.setItem("usuarioConectado",JSON.stringify(this.usuarioConectado));
               Swal.fire({
                 title: 'Se ha modificado correctamente al usuario '+this.usuarioMod.nombre,
                 text: "Refresca la página actualizar los cambios",
@@ -214,6 +219,10 @@ export class AdminComponent implements OnInit {
       //Se llama al servicio para modificar un usuario
       this.servicioDatos.modificarUser(username,puntos,tipo,img,this.usuarioMod.nombre).subscribe(datos => {
         if (datos["result"]=="OK"){//Si se modifica el usuario correctamente, le saltará un mensaje al usuario
+          this.usuarioConectado.points=username;
+          this.usuarioConectado.points=puntos;
+          this.usuarioConectado.tipo=tipo;
+          sessionStorage.setItem("usuarioConectado",JSON.stringify(this.usuarioConectado));
           Swal.fire({
             title: 'Se ha modificado correctamente al usuario '+this.usuarioMod.nombre,
             text: "Refresca la página actualizar los cambios",
@@ -267,6 +276,12 @@ export class AdminComponent implements OnInit {
    * Funcion que se llevara a cabo cuando se inicie la pagina. Se obtendrá toda la informacion de todos los usuarios registrados en la BD
    */
   ngOnInit(): void {
+    //Animación para dirigirse automaticamente al inicio de la página
+    $(document).ready(function(){
+      $('body, html').animate({
+        scrollTop: '0px'
+      }); 
+    });
     //Si hay un usuario guardado en la sesion del navegador
     if (JSON.parse(sessionStorage.getItem("usuarioConectado"))){
       this.usuarioConectado=JSON.parse(sessionStorage.getItem("usuarioConectado"));

@@ -1,6 +1,7 @@
 import { ActivatedRoute, Data } from '@angular/router';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
+import * as $ from 'jquery';
 
 import { Component, OnInit } from '@angular/core';
 
@@ -45,6 +46,12 @@ export class AtraccionComponent implements OnInit {
    */
   constructor(private rutaActiva: ActivatedRoute, private servicioDatos: DataService, 
               private router: Router, private _config: NgbCarouselConfig) { 
+    //Animación para dirigirse automaticamente al inicio de la página
+    $(document).ready(function(){
+      $('body, html').animate({
+        scrollTop: '0px'
+      }); 
+    });
     //Se modifican los valores del carrusel
     _config.interval=3500;
     _config.pauseOnHover=true;

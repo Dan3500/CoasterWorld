@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
+import * as $ from 'jquery';
 
 import { Usuario } from 'src/usuario';
 
@@ -18,7 +19,12 @@ export class PrincipalComponent implements OnInit {
    }
 
   ngOnInit(): void {
-  
+    //Animación para dirigirse automaticamente al inicio de la página
+    $(document).ready(function(){
+      $('body, html').animate({
+        scrollTop: '0px'
+      }); 
+    });
   }
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Data } from '@angular/router';
 import { Router } from '@angular/router';
+import * as $ from 'jquery';
 
 import { DataService } from 'src/app/services/data.service'
 import { NgbPaginationNumber } from '@ng-bootstrap/ng-bootstrap';
@@ -35,6 +36,12 @@ export class ParqueComponent implements OnInit {
    * @param router: Objeto para poder redirigir al usuario a otra página
    */
   constructor(private rutaActiva: ActivatedRoute, private router: Router, private servicioDatos: DataService) { 
+    //Animación para dirigirse automaticamente al inicio de la página
+    $(document).ready(function(){
+      $('body, html').animate({
+        scrollTop: '0px'
+      }); 
+    });
     //Se obtiene el nombre del parque a través de la url 
     this.rutaActiva.params.subscribe(params=>{
       //Se accede al servidor para obtener la información del parque buscado

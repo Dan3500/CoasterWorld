@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal  from 'sweetalert2';
+import * as $ from 'jquery';
 
 import { Usuario } from 'src/usuario';
 
@@ -231,6 +232,12 @@ export class LoginRegisterComponent implements OnInit {
    * formularios de login o register
    */
   ngOnInit(): void {
+    //Animación para dirigirse automaticamente al inicio de la página
+    $(document).ready(function(){
+      $('body, html').animate({
+        scrollTop: '0px'
+      }); 
+    });
     if (JSON.parse(sessionStorage.getItem("usuarioConectado"))){//Si hay un usuario guardado en la sesion del navegador
       this.usuarioConectado=JSON.parse(sessionStorage.getItem("usuarioConectado"));
     }

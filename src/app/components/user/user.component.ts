@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Data } from '@angular/router';
 import { Router } from '@angular/router';
+import * as $ from 'jquery';
 
 import { Usuario } from 'src/usuario';
 
@@ -39,6 +40,12 @@ export class UserComponent implements OnInit {
    * Funcion que se llevara a cabo cuando se inicie la página de perfil de usuario
    */
   ngOnInit(): void {
+    //Animación para dirigirse automaticamente al inicio de la página
+    $(document).ready(function(){
+      $('body, html').animate({
+        scrollTop: '0px'
+      }); 
+    });
     this.usuarioVisitado=null;
     //Se comprobará si hay un usuario conectado
     if (JSON.parse(sessionStorage.getItem("usuarioConectado"))){//Si hay un usuario conectado, se guardarán los datos en la variable
