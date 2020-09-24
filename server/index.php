@@ -145,12 +145,17 @@
         break; 
         //FUNCION PARA ESCRIBIR UN COMENTARIO EN UNA PÁGINA ESPECIFICA
         case "publicarComentario":
-            $response->result=publicarComentario($params->comentario,$params->pagina,$params->user);
+            $response->puntos=publicarComentario($params->comentario,$params->pagina,$params->user);
+            $response->result="OK";
         break; 
         //------------------------------------------COMPONENTE VALORACIONES----------------------------------------------------------
         //FUNCION PARA HACER UNA VALORACION DE UN PARQUE O ATRACCION
         case "nuevaValoracion": 
-            $response->result=nuevaValoracion($params->valoracion,$params->pagina,$params->user);
+            $resultado=nuevaValoracion($params->valoracion,$params->pagina,$params->user);
+            $response->result=$resultado[0];
+            if (!empty($resultado[1])){
+                $response->puntos=$resultado[1];
+            }
         break;
         //FUNCION PARA OBTENER LA MEDIA DE VALORACIONES DE UN PARQUE O ATRACCION
         case "mediaValoraciones": 

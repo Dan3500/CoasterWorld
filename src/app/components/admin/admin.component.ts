@@ -178,11 +178,14 @@ export class AdminComponent implements OnInit {
           img=this.imgMod.nombreArchivo;//Se obtendra la ruta del archivo como imagen
           this.servicioDatos.modificarUser(username,puntos,tipo,img,this.usuarioMod.nombre).subscribe(datos => {//Se llama al servicio para modificar el usuario
             if (datos["result"]=="OK"){//Si se modifica correctamente el usuario, le saltara al usuario un mensaje de informacion
-              this.usuarioConectado.points=username;
-              this.usuarioConectado.points=puntos;
-              this.usuarioConectado.tipo=tipo;
-              this.usuarioConectado.userImg=img;
-              sessionStorage.setItem("usuarioConectado",JSON.stringify(this.usuarioConectado));
+              //Si el usuario que se va a modificar es el mismo que esta conectado, se modificaran los datos del usuario de la sesion
+              if (this.usuarioConectado.username==this.usuarioMod.nombre){
+                this.usuarioConectado.username=username;
+                this.usuarioConectado.points=puntos;
+                this.usuarioConectado.tipo=tipo;
+                this.usuarioConectado.userImg=img;
+                sessionStorage.setItem("usuarioConectado",JSON.stringify(this.usuarioConectado));
+              }
               Swal.fire({
                 title: 'Se ha modificado correctamente al usuario '+this.usuarioMod.nombre,
                 text: "Refresca la página actualizar los cambios",
@@ -219,10 +222,13 @@ export class AdminComponent implements OnInit {
       //Se llama al servicio para modificar un usuario
       this.servicioDatos.modificarUser(username,puntos,tipo,img,this.usuarioMod.nombre).subscribe(datos => {
         if (datos["result"]=="OK"){//Si se modifica el usuario correctamente, le saltará un mensaje al usuario
-          this.usuarioConectado.points=username;
-          this.usuarioConectado.points=puntos;
-          this.usuarioConectado.tipo=tipo;
-          sessionStorage.setItem("usuarioConectado",JSON.stringify(this.usuarioConectado));
+          //Si el usuario que se va a modificar es el mismo que esta conectado, se modificaran los datos del usuario de la sesion
+          if (this.usuarioConectado.username==this.usuarioMod.nombre){
+            this.usuarioConectado.username=username;
+            this.usuarioConectado.points=puntos;
+            this.usuarioConectado.tipo=tipo;
+            sessionStorage.setItem("usuarioConectado",JSON.stringify(this.usuarioConectado));
+          }
           Swal.fire({
             title: 'Se ha modificado correctamente al usuario '+this.usuarioMod.nombre,
             text: "Refresca la página actualizar los cambios",

@@ -43,6 +43,13 @@ export class ComentariosComponent implements OnInit {
         this.servicioDatos.publicarComentario(comentario,params["nombre"],this.usuarioConectado.email).subscribe(data=>{
           //Si la publicacion del comentario es correcta
           if (data['result']=="OK"){
+            /*Si los puntos del usuario conectado superan los 750 y el usuario es de tipo usuario,
+            * se modificara el valor del tipo de la sesión
+            */ 
+            if (data['puntos']>=750&&this.usuarioConectado.tipo=="usuario"){
+              this.usuarioConectado.tipo="moderador";
+              sessionStorage.setItem("usuarioConectado",JSON.stringify(this.usuarioConectado));
+            }
             //Se mostrará un mensaje emergente informando al usuario de que la publicación fue exitosa
             Swal.fire({
               title: 'Se ha publicado correctamente tu comentario',

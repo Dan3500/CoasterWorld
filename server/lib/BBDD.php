@@ -512,7 +512,7 @@
                             $id=intval(++$row["maxId"]);//Se creará un nuevo ID para la valoracion
                             $sql="INSERT INTO valoraciones VALUES ('$user', $id, $valoracion,'$pagina')";
                             $result=$this->bbdd->query($sql);//Se insertará en la base de datos
-                            if ($result){//Si no hay errores a la hora de insertar el comentario, se aprobará la insercion
+                            if ($result){//Si no hay errores a la hora de insertar la valoracion, se aprobará la insercion
                                 $return="INSERTAR";
                             }else{//Si hay algun error, fallará la insercion
                                 $return="FAILED INSERTAR";
@@ -521,7 +521,7 @@
                             $id=intval(1);//Se creará un nuevo ID para la valoracion
                             $sql="INSERT INTO valoraciones VALUES ('$user', $id, $valoracion,'$pagina')";
                             $result=$this->bbdd->query($sql);//Se insertará en la base de datos
-                            if ($result){//Si no hay errores a la hora de insertar el comentario, se aprobará la insercion
+                            if ($result){//Si no hay errores a la hora de insertar la valoracion, se aprobará la insercion
                                 $return="INSERTAR";
                             }else{//Si hay algun error, fallará la insercion
                                 $return="FAILED INSERTAR";
@@ -624,6 +624,44 @@
                         }else{//Si no, significa que no ha hecho ninguna valoracion y enviara 0 al cliente
                             $return=0;
                         }
+                    }
+                }else{
+                    throw new Exception("No se ha conectado con la base de datos");
+                }
+            }catch(Exception $e){
+                $this->bbdd = null;
+                throw new Exception("Error de conexión:".$e->getMessage());
+            }return $return;
+        }
+
+        /**
+         * Metodo para sumar puntos a los usuarios que hayan publicado un nuevo usuario o valoracion. Se le sumaran 15 puntos
+         * y se comprobará si una vez sumados los puntos alcanzan 750. Si se consigue esa cantidad, el usuario pasará a ser de
+         * tipo moderador, pudiendo acceder a sus funciones
+         * @param user: Correo electrónico del usuario al que se le van a sumar los puntos
+         * @return return: Resultado de las operaciones
+         */
+        function sumarPuntos($user){
+            $return="FAILED SUMAR PUNTOS";
+            try{
+                if ($this->bbdd){
+                    $sql="SELECT puntos, tipo FROM usuario WHERE email LIKE '$user'";
+                    $result=$this->bbdd->query($sql);//Se obtendran los puntos actuales de un usuario
+                    if ($result){
+                        $row=mysqli_fetch_assoc($result);
+                        $puntos=15+$row["puntos"];//Se le sumaran 15 puntos al usuario
+                        if ($puntos>=750&&($row["tipo"]=="usuario")){
+                            $sql="UPDATE usuario SET puntos = $puntos , tipo = 'moderador' WHERE email LIKE '$user'";
+                            $result=$this->bbdd->query($sql);//Se actualizara la base de datos
+                        }else{
+                            $sql="UPDATE usuario SET puntos = $puntos WHERE email LIKE '$user'";
+                            $result=$this->bbdd->query($sql);//Se actualizara la base de datos
+                        }
+                        if ($result){
+                            $return=$puntos;
+                        }
+                    }else{//Si hay algun error, fallará la suma de puntos
+                        $return="FAILED SUMAR PUNTOS";
                     }
                 }else{
                     throw new Exception("No se ha conectado con la base de datos");

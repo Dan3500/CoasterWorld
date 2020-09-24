@@ -50,6 +50,13 @@ export class ValoracionesComponent implements OnInit {
           switch(data["result"]){
             //ACCIONES EXITOSAS
             case "INSERTAR"://Si el usuario nunca ha valorado la página, habrá insertado una nueva valoracion en la BD
+              /*Si al añadir una nueva valoracion, los puntos del usuario conectado superan los 750 y 
+              * el usuario es de tipo usuario, se modificara el valor del tipo de la sesión
+              */ 
+              if (data['puntos']>=750&&this.usuarioConectado.tipo=="usuario"){
+                this.usuarioConectado.tipo="moderador";
+                sessionStorage.setItem("usuarioConectado",JSON.stringify(this.usuarioConectado));
+              }
               //Se mostrará un mensaje de exito al usuario
               Swal.fire({
                 title: 'Se ha publicado tu valoración',

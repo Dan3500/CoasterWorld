@@ -229,6 +229,9 @@
         $bbdd=new BBDD();
             //Se almacenará en la BD el comentario y sus datos
             $resultado=$bbdd->publicarComentario($comentario,$pagina,$user);
+            if ($resultado=="OK"){
+                $resultado=$bbdd->sumarPuntos($user);//Se devolverán los puntos que tiene el usuario
+            }
         unset($bbdd);
         return $resultado;
     }
@@ -239,20 +242,23 @@
      * @param valoracion: Puntuacion que le ha dado el usuario al parque o atraccion
      * @param pagina: Nombre de la página que ha valorado el usuario
      * @param user: Email del usuario que ha hecho la valoracion
-     * @return resultado: String que indica el resultado de la insercion de la valoracion
+     * @return resultado: Array que indica el resultado de la insercion de la valoracion
      * enviara ACTUALIZAR si se ha actualizado una valoracion o INSERTAR si se ha almacenado una nueva
+     * y los puntos que tiene el usuario nada más publicar una nueva valoracion
      */
     function nuevaValoracion($valoracion,$pagina,$user){
-        $resultado="";
+        $resultado=array();
         $bbdd=new BBDD();
             if ($bbdd->comprobarValoracion($pagina,$user)){
             //Si ya existe la valoracion de este usuario en esta pagina, se actualizará el registro de la BD
-                $resultado=$bbdd->actualizarValoracion($valoracion,$pagina,$user);
+                $resultado[0]=$bbdd->actualizarValoracion($valoracion,$pagina,$user);
             }else{
             //Si no existe la valoracion de este usuario en esta pagina, se insertará un nuevo registro en la BD
-                $resultado=$bbdd->insertarNuevaValoracion($valoracion,$pagina,$user);
+                $resultado[0]=$bbdd->insertarNuevaValoracion($valoracion,$pagina,$user);
+                if ($resultado[0]=="INSERTAR"){
+                    $resultado[1]=$bbdd->sumarPuntos($user);
+                }
             }
-        //Se almacenará en la BD el comentario y sus datos
         unset($bbdd);
         return $resultado;
     }
