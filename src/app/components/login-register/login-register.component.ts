@@ -6,6 +6,8 @@ import * as $ from 'jquery';
 
 import { Usuario } from 'src/usuario';
 
+//PRUEBA GIT
+
 import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-login-register',
