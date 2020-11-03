@@ -148,6 +148,14 @@
             $response->puntos=publicarComentario($params->comentario,$params->pagina,$params->user);
             $response->result="OK";
         break; 
+        case "eliminarComentario":
+            $resultado=eliminarComentario($params->usuario,$params->comentario,$params->pagina);
+            if ($resultado){
+                $response->result="OK";
+            }else{
+                $response->result="FAILED";
+            }
+        break; 
         //------------------------------------------COMPONENTE VALORACIONES----------------------------------------------------------
         //FUNCION PARA HACER UNA VALORACION DE UN PARQUE O ATRACCION
         case "nuevaValoracion": 

@@ -12,7 +12,7 @@
             <label for="puntosMod">Puntos: </label>
             <input type="number" id="puntosMod" name="puntosMod" value="{{usuarioMod.puntos}}"/><br><br>
             <label for="imgMod">Imagen: </label>
-            <img src="{{usuarioMod.img}}" class="imgMod"><br><br>
+            <img src="{{usuarioMod.img}}" class="imgMod"><br>
             <input type="file" name="imgMod" id="imgMod" placeholder="Selecciona una nueva imagen"
                     (change)="selectFile($event)"><br><br> 
             <label for="tipoMod">Tipo: </label>
@@ -26,12 +26,12 @@
                 <option value="moderador" selected>Moderador</option>
                 <option value="admin">Administrador</option>
             </select>
-            <select id="tipoMod" name="tipoMod" *ngIf="usuarioMod.tipo=='admin'">
-                <option value="usuario">Usuario</option>
-                <option value="moderador">Moderador</option>
-                <option value="admin" selected>Administrador</option>
-            </select><br><br>
-            <button type="submit" class="btnMod">Modificar</button><br>
+                <select id="tipoMod" name="tipoMod" *ngIf="usuarioMod.tipo=='admin'">
+                    <option value="usuario">Usuario</option>
+                    <option value="moderador">Moderador</option>
+                    <option value="admin" selected>Administrador</option>
+                </select><br><br>
+                <button type="submit" class="btnMod">Modificar</button><br>
         </form>
     </div>
 </div>

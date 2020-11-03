@@ -137,22 +137,12 @@ export class LoginRegisterComponent implements OnInit {
               this.Auth.registrarUsuario(this.usuarioReg).subscribe(data=>{
                 switch(data["result"]){
                   case "OK"://Si se inserta correctamente
-                    /**
-                     * 
-                     * 
-                     * ENVIAR CORREO DE ACTIVACION
-                     * ACTIVAR CUENTA
-                     *
-                     * 
-                     * 
-                     */
-                    //this.ocultarMsgLogError();
                     Swal.fire({
-                      title: 'Se ha registrado correctamente',
-                      text: "Refresca la página para verlo",
+                      title: 'Te has registrado correctamente',
+                      text: "Inicia sesión para entrar como usuario",
                       icon: 'success',
                       confirmButtonColor: '#3085d6',
-                      confirmButtonText: 'Refrescar página'
+                      confirmButtonText: 'Confirmar'
                     }).then((result) => {
                       if (result.value) {
                         location.reload();//Si se pulsa el botón, se recargará la página

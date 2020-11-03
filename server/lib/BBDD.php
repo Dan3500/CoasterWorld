@@ -457,6 +457,36 @@
             }return $return;
         }
 
+        /**
+         * Metodo para eliminar un comentario de la base de datos
+         *  @param comentario: Texto que ha escrito el usuario
+         * @param pagina: Página donde se ha publicado el comentario
+         * @param user: Email del usuario que ha escrito el comentario
+         * @return return: Boolean que indicará el resultado de la sentencia al eliminar el comentario
+         */
+        function eliminarComentario($comentario,$pagina,$user){
+            $return=false;
+            try{
+                if ($this->bbdd){
+                   $sql="DELETE FROM comentarios 
+                         WHERE id_mensaje=(SELECT id_mensaje FROM comentarios 
+                                        WHERE mensaje = '$comentario' AND pagina = '$pagina' 
+                                        AND usuario =(SELECT email FROM usuario WHERE Username = '$user')
+                                     limit 1);";
+                    $result=$this->bbdd->query($sql);
+                    if ($result){
+                        $return=true;
+                    }
+                }else{
+                    throw new Exception("No se ha conectado con la base de datos");
+                }
+            }catch(Exception $e){
+                $this->bbdd = null;
+                throw new Exception("Error de conexión:".$e->getMessage());
+            }return $return;
+        }
+
+
         //-------------------------------------------------COMPONENTE VALORACIONES----------------------------------------------
 
         /**

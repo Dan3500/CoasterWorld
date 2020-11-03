@@ -33,6 +33,9 @@
     </div>
     <div class="cajaComentarios" *ngFor="let comentario of infoComentarios.comentarios, index as i, last as isLast">
         <div class="comentario row">
+            <button class="btnEliminarCom"  (click)="eliminarComentario(comentario)"
+                    *ngIf="usuarioConectado.tipo=='admin'||usuarioConectado.tipo=='moderador'||usuarioConectado.username==comentario.Usuario"
+                   >x</button>
             <div class="col-4 foto">
                 <a [routerLink]="['/user',comentario.Usuario]"><img class="imgComentario" src="{{comentario.Img}}"></a>
             </div>

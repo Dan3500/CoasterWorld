@@ -236,6 +236,14 @@
         return $resultado;
     }
 
+    function eliminarComentario($usuario,$comentario,$pagina){
+        $bbdd=new BBDD();
+            //Se eliminará en la BD el comentario
+            $resultado=$bbdd->eliminarComentario($comentario,$pagina,$usuario);
+        unset($bbdd);
+        return $resultado;
+    }
+
     //------------------------------------------------------COMPONENTE VALORACIONES------------------------------------------------
     /**
      * Metodo para insertar en la BD una nueva valoración hecha por el usuario o actualizar una ya insertada

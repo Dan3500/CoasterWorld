@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseURL: "http://localhost/CoasterWorld/server/"
+  baseURL: "http://localhost/CoasterWorld/server"
 };
 
 /*

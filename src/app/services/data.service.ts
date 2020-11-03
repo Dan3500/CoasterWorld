@@ -52,6 +52,10 @@ export class DataService {
     return this.http.post(`${this.URL}/index.php?accion=publicarComentario`,{comentario,pagina,user});
   }
 
+  eliminarComentario(usuario,comentario,pagina){
+    return this.http.post(`${this.URL}/index.php?accion=eliminarComentario`,{usuario,comentario,pagina});
+  }
+
   //--------------------------------------------------------SERVICIOS DE VALORACIONES------------------------------------------------------------
   /**
    * Servicio para insertar en la BD una valoracion de un parque o atraccion
