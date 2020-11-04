@@ -5,7 +5,7 @@
     </div>
     <div class="col-12 containerPerfil" *ngIf="usuarioConectado.username!=null">
         <div class="imgPerfil">
-            <img class="fotoPerfil" src="{{usuarioConectado.userImg}}"/>
+            <a routerLink="/user/{{usuarioConectado.username}}"> <img class="fotoPerfil" src="{{usuarioConectado.userImg}}"/></a>
         </div>
         <a routerLink="/user/{{usuarioConectado.username}}" class="nombreUser">{{usuarioConectado.username}}</a>
         <br><span class="tipo"> ({{usuarioConectado.tipo}})</span>

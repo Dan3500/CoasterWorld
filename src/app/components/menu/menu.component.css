@@ -6,7 +6,6 @@
     }
     .containerPerfil{
         border-bottom:2px solid black;
-        padding-top:10px;
         padding-bottom: 10px;
     }
     .imgPerfil{
@@ -17,6 +16,10 @@
         margin:auto;
         overflow:hidden;
     }
+        .imgPerfil:hover{
+            border:2px solid blue;
+        }
+
         .fotoPerfil{
             width:220px;
             height:220px;

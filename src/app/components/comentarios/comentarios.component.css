@@ -24,7 +24,7 @@
             .imgUser:hover{
                 border-radius:100%;
                 margin-top:10px;
-                border:2px solid #307FE2;
+                border:1px solid #307FE2;
                 width:75px;
                 height:75px;
             }
@@ -75,7 +75,7 @@
     }
     .imgComentario:hover{
         border-radius:100%;
-        border:2px solid #307FE2;
+        border:1px solid #307FE2;
         width:75px;
         height:75px;
     }
