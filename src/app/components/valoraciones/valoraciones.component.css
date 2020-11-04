@@ -39,17 +39,21 @@ input[type = "radio"]:checked ~ label{
 }
 .medias{
     font-size:20px;
+    font-weight: bold;
     color:#307FE2;
 }
 .sinValoraciones{
+    font-weight: bold;
     text-align:center;
     color:#307FE2;
 }
 .errorValorar0{
     text-align:center;
+    font-weight: bold;
     color:red;
 }
 .tuValoracion{
+    font-weight: bold;
     text-align:center;
     color:#307FE2;
 }

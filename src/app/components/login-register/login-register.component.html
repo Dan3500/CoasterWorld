@@ -69,11 +69,13 @@
                      Ha habido un error al intentar registrar los datos. Inténtalo de nuevo más tarde.
               </p>
               <br />
+              <br>
               <button  class="btnVolver" (click)="irAPrincipal()">Volver a inicio</button>
           </div>
+          <br>
+          <br>
           <!--CONTENIDO QUE SE MOSTRARÁ SI SE INTENTA ACCEDER A LA PÁGINA CONECTADO-->
           <div class="col-12" *ngIf="usuarioConectado.username!=null">
-              <br />
               <br />
               <br />
               <br />
@@ -90,10 +92,6 @@
               <br />
               <br />
                      <button  class="btnVolverError" (click)="irAPrincipal()">Volver a inicio</button>
-              <br />
-              <br />
-              <br />
-              <br />
               <br />
               <br />
               <br />

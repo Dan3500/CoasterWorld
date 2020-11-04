@@ -15,6 +15,9 @@
       </p>
       <button type="submit" class="btnValorar btn btn-success" name="estrellas">Valorar</button>
   </form><br>
+  <div class="tuValoracion" *ngIf="valoracionUsuario.mostrar==true"><!--SE MOSTRARA SI EL USUARIO CONECTADO HA VALORADO LA PÁGINA-->
+    Tu valoración: {{valoracionUsuario.puntos}}★<br>
+  </div>
 </div>
 <br>
 <div *ngIf="errorValorar0==true"><!--SE MOSTRARA SI NO SE INDICA LA PUNTUACIÓN AL VALORAR UNA PÁGINA-->
@@ -25,8 +28,5 @@
 </div>
 <div class="sinValoraciones" *ngIf="sinValoraciones==true"><!--SE MOSTRARA SI LA PAGINA NO TIENE VALORACIONES-->
   No hay puntuaciones de los usuarios<br>
-</div>
-<div class="tuValoracion" *ngIf="valoracionUsuario.mostrar==true"><!--SE MOSTRARA SI EL USUARIO CONECTADO HA VALORADO LA PÁGINA-->
-  Tu valoración: {{valoracionUsuario.puntos}}★<br>
 </div>
 <br>

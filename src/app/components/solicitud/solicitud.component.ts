@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Usuario } from 'src/usuario';
 import { Router } from '@angular/router';
 import Swal  from 'sweetalert2';
+import * as $ from 'jquery';
 
 import { DataService } from 'src/app/services/data.service';
 
@@ -60,6 +61,11 @@ export class SolicitudComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    $(document).ready(function(){
+      $('body, html').animate({
+        scrollTop: '0px'
+      }); 
+    });
     if (JSON.parse(sessionStorage.getItem("usuarioConectado"))){//Si hay un usuario guardado en la sesion del navegador
       this.usuarioConectado=JSON.parse(sessionStorage.getItem("usuarioConectado"));
     }
