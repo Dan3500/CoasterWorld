@@ -14,7 +14,7 @@
             <label for="imgMod">Imagen: </label>
             <img src="{{usuarioMod.img}}" class="imgMod"><br>
             <input type="file" name="imgMod" id="imgMod" placeholder="Selecciona una nueva imagen"
-                    (change)="selectFile($event)"><br><br> 
+                    (change)="selectFile($event)" accept="image/*"><br><br> 
             <label for="tipoMod">Tipo: </label>
             <select id="tipoMod" name="tipoMod" *ngIf="usuarioMod.tipo=='usuario'">
                 <option value="usuario" selected>Usuario</option>

@@ -6,8 +6,18 @@
         <br>
         <div class="cajaInfoUsuario row">
             <div class="col-7 cajaImgUser">
-                <div class="imgUser">
-                    <img src="{{datosPerfilUsuario.img}}" class="foto">
+                <div class="row">
+                    <div class="imgUser">
+                        <img src="{{datosPerfilUsuario.img}}" class="foto">
+                    </div>
+                    <div class="formImg col-12" *ngIf="usuarioConectado.username==datosPerfilUsuario.username">
+                        <form  #formMod="ngForm" (submit)="modificarFoto($event)">
+                                <input type="file" class="imgMod" name="imgMod" id="imgMod"
+                                        (change)="selectFile($event)"
+                                        accept="image/*">
+                            <button type="submit" class="btnMod btn btn-primary">Modificar</button>
+                        </form>
+                    </div>
                 </div>
             </div>
             <div class="col-5 cajaInfoUser">
@@ -32,6 +42,7 @@
                 </ul>
             </div>
         </div>
+        <br>
         <h2 class="tituloPerfil gran">Valoraciones</h2>
         <br>
         <div class="cajaValoracionesUsuario  row">

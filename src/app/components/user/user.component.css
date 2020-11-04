@@ -19,6 +19,31 @@
         background-color: rgba(255, 255, 255, 0.7);
     }
 
+    .formImg{
+        text-align:center;  
+    }
+
+        .lbl{
+            text-align: left;
+            padding-left:10px;
+            font-weight: bold;
+            padding-top:9px;
+        }
+
+        .archivo{
+            width:60%;
+        }
+            .imgMod{
+                height:50px;
+            }
+
+        .btnMod{
+            border:1px solid black;
+            margin:auto;
+            width:120px;
+            height:30px;
+        }
+
     .cajaInfoUsuario{
         width:100%;
         height:300px;
