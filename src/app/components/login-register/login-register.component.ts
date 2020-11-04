@@ -5,7 +5,7 @@ import Swal  from 'sweetalert2';
 import * as $ from 'jquery';
 
 import { Usuario } from 'src/usuario';
-//Prueba
+
 import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-login-register',
