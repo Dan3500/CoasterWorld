@@ -10,8 +10,6 @@ import { Usuario } from 'src/usuario';
 })
 export class AppComponent {
 
-  constructor() { }
-
   ngOnInit(): void {
     
   }

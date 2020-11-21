@@ -17,6 +17,9 @@ export class SolicitudComponent implements OnInit {
 
   usuarioConectado= new Usuario(null,null,null,null,null,null);//Usuario conectado actualmente en la pagina
 
+  regExp=/^[^><]{2,16}/;
+  regExpMen=/^[^><]/;
+
   /**
    * Metodo para enviar una solicitud
    * @param event: Evento que se crea al pulsar el boton de enviar el formulario de la solicitud
@@ -26,31 +29,41 @@ export class SolicitudComponent implements OnInit {
     const usuario=target.querySelector('#emisor').value;
     const asunto=target.querySelector('#asunto').value;
     const mensaje=target.querySelector('#mensaje').value;
-    this.servicioDatos.enviarMail(usuario,asunto,mensaje).subscribe(data=>{//Llama al servicio para enviar el email de la solicitud
-      //Si el envio del mail es correcto
-      if (data['result']=="OK"){
-        //Se mostrará un mensaje emergente informando al usuario de que el mail se ha enviado correctamente
-        Swal.fire({
-          title: 'Se ha enviado correctamente tu mensaje a un administrador',
-          icon: 'success',
-          confirmButtonColor: '#3085d6',
-          confirmButtonText: 'Volver'
-        }).then((result) => {
-          if (result.value) {
-            this.router.navigate(['./home']);//Si se pulsa el botón, se enviara al usuario al inicio
-          }
-        })
-      }else{//Si hay algún fallo a la hora de enviar el mail
-        //Se mostrará un mensaje emergente informando al usuario de que el envio fue erroneo
-        Swal.fire({
-          title: 'Ha habido un error al enviar tu email',
-          text: "Inténtalo de nuevo más tarde",
-          icon: 'error',
-          confirmButtonColor: '#3085d6',
-          confirmButtonText: 'Volver'
-        })
-      }
-    })
+    if (this.regExp.test(asunto)&&this.regExpMen.test(mensaje)){
+      this.servicioDatos.enviarMail(usuario,asunto,mensaje).subscribe(data=>{//Llama al servicio para enviar el email de la solicitud
+        //Si el envio del mail es correcto
+        if (data['result']=="OK"){
+          //Se mostrará un mensaje emergente informando al usuario de que el mail se ha enviado correctamente
+          Swal.fire({
+            title: 'Se ha enviado correctamente tu mensaje a un administrador',
+            icon: 'success',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Volver'
+          }).then((result) => {
+            if (result.value) {
+              this.router.navigate(['./home']);//Si se pulsa el botón, se enviara al usuario al inicio
+            }
+          })
+        }else{//Si hay algún fallo a la hora de enviar el mail
+          //Se mostrará un mensaje emergente informando al usuario de que el envio fue erroneo
+          Swal.fire({
+            title: 'Ha habido un error al enviar tu email',
+            text: "Inténtalo de nuevo más tarde",
+            icon: 'error',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Volver'
+          })
+        }
+      })
+    }else{
+      Swal.fire({
+        title: 'La información que quieres enviar no es válida',
+        text: "Comprueba que en los campos no escribas los carácteres '>' o '<' y que el asunto tenga entre 2 y 16 caracteres",
+        icon: 'error',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Volver'
+      })
+    }
   }
 
   /**
