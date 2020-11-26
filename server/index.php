@@ -17,10 +17,10 @@
     class Result{}
     $response=new Result();
     //SE COMPRUEBA LA SESION DEL USUARIO
-    if (@!$_SESSION["user"]){
+    if (!isset($_SESSION["user"])){
         $_SESSION["user"]=null;
     }
-    $accion=@$_GET["accion"]??null;//SE ESCOGE LA OPCIÓN ADECUADA SEGÚN LA URL
+    $accion=$_GET["accion"]??null;//SE ESCOGE LA OPCIÓN ADECUADA SEGÚN LA URL
     //PRUEBAS: print_r($params);
     switch($accion){
         //------------------------------------------FUNCIONES DE SESION DEL USUARIO----------------------------------------------------------
@@ -45,9 +45,7 @@
             $response->result=register($params->username,$params->password,$params->email);
             switch($response->result){
                 case "OK":
-                    /**
-                     * SE ENVIA EL CORREO DE AUTENTICACION DEL USUARIO*
-                     */
+                    
                 break;
             }
         break;
@@ -148,6 +146,7 @@
             $response->puntos=publicarComentario($params->comentario,$params->pagina,$params->user);
             $response->result="OK";
         break; 
+        //FUNCION PARA ELIMINAR UN COMENTARIO EN UNA PÁGINA ESPECIFICA
         case "eliminarComentario":
             $resultado=eliminarComentario($params->usuario,$params->comentario,$params->pagina);
             if ($resultado){
@@ -195,6 +194,11 @@
                 $response->result="NO EXISTE";
             }
         break;
+        //FUNCION PARA MODIFICAR LOS DATOS DE UN USUARIO
+        case "modificarUser":
+            $response->result=modificarUser($params->username,$params->puntos,
+                                            $params->tipo,$params->img,$params->userMod);
+        break;
         //------------------------------------------ENVIO DE SOLICITUD--------------------------------------------------------
         //FUNCION PARA ENVIAR UN CORREO A UN ADMINISTRADOR DE LA PAGINA
         case "envioMail": 
@@ -233,11 +237,6 @@
             }else{
                 $response->result="FAILED";
             }
-        break;
-        //FUNCION PARA MODIFICAR LOS DATOS DE UN USUARIO
-        case "modificarUser":
-            $response->result=modificarUser($params->username,$params->puntos,
-                                            $params->tipo,$params->img,$params->userMod);
         break;
     }
     //SE DEVUELVEN LOS DATOS AL CLIENTE

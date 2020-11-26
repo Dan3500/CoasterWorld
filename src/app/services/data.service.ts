@@ -99,6 +99,18 @@ export class DataService {
     return this.http.post(`${this.URL}/index.php?accion=perfilUsuario`,{perfilUser});
   }
 
+  /**
+   * Servicio para modificar la informacion de un usuario registrado
+   * @param username: Nuevo nombre de usuario que se introducira al usuario que se va a modificar
+   * @param puntos: Nueva cantidad de puntos que se introducira al usuario que se va a modificar
+   * @param tipo: Nuevo tipo de usuario que se introducira al usuario que se va a modificar
+   * @param img: Nueva ruta de imagen de usuario que se introducira al usuario que se va a modificar
+   * @param userMod: Nombre del usuario que se va a modificar
+   * @return: Array que contiene el resultado de la llamada y la ruta de la imagen que se ha subido y guardado en el servidor
+   */
+  modificarUser(username,puntos,tipo,img,userMod){
+    return this.http.post(`${this.URL}/index.php?accion=modificarUser`,{username,puntos,tipo,img,userMod});
+  }
   //--------------------------------------------------------SERVICIOS DE ENVIO DE SOLICITUD------------------------------------------------------------
  /**
    * Servicio para enviar una solicitud (email) al correo de un administrador
@@ -136,18 +148,5 @@ export class DataService {
    */
   subirNuevaImagen(file){
     return this.http.post(`${this.URL}/index.php?accion=subirImagen`,{file},{headers:{'Content-Type':'Multipart/form-data'}});
-  }
-
-  /**
-   * Servicio para modificar la informacion de un usuario registrado
-   * @param username: Nuevo nombre de usuario que se introducira al usuario que se va a modificar
-   * @param puntos: Nueva cantidad de puntos que se introducira al usuario que se va a modificar
-   * @param tipo: Nuevo tipo de usuario que se introducira al usuario que se va a modificar
-   * @param img: Nueva ruta de imagen de usuario que se introducira al usuario que se va a modificar
-   * @param userMod: Nombre del usuario que se va a modificar
-   * @return: Array que contiene el resultado de la llamada y la ruta de la imagen que se ha subido y guardado en el servidor
-   */
-  modificarUser(username,puntos,tipo,img,userMod){
-    return this.http.post(`${this.URL}/index.php?accion=modificarUser`,{username,puntos,tipo,img,userMod});
   }
 }
